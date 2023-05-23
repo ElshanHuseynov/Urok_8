@@ -169,56 +169,78 @@
 // }
 
 // Задача 62
+// class Program
+// {
+//     static void Main()
+//     {
+//         int[,] array = new int[4, 4];
+
+//         int num = 1;
+//         int rowStart = 0, rowEnd = 3;
+//         int colStart = 0, colEnd = 3;
+
+//         while (rowStart <= rowEnd && colStart <= colEnd)
+//         {
+//             for (int i = colStart; i <= colEnd; i++)
+//             {
+//                 array[rowStart, i] = num++;
+//             }
+//             rowStart++;
+
+//             for (int i = rowStart; i <= rowEnd; i++)
+//             {
+//                 array[i, colEnd] = num++;
+//             }
+//             colEnd--;
+
+//             if (rowStart <= rowEnd)
+//             {
+//                 for (int i = colEnd; i >= colStart; i--)
+//                 {
+//                     array[rowEnd, i] = num++;
+//                 }
+//                 rowEnd--;
+//             }
+
+//             if (colStart <= colEnd)
+//             {
+//                 for (int i = rowEnd; i >= rowStart; i--)
+//                 {
+//                     array[i, colStart] = num++;
+//                 }
+//                 colStart++;
+//             }
+//         }
+
+//         for (int i = 0; i < 4; i++)
+//         {
+//             for (int j = 0; j < 4; j++)
+//             {
+//                 Console.Write(array[i, j].ToString("D2") + " ");
+//             }
+//             Console.WriteLine();
+//         }
+//     }
+// }
+
+// Задача 64
 class Program
 {
     static void Main()
     {
-        int[,] array = new int[4, 4];
+        int n = 8;
+        Console.WriteLine("Результат: " + PrintNumbers(n));
+    }
 
-        int num = 1;
-        int rowStart = 0, rowEnd = 3;
-        int colStart = 0, colEnd = 3;
-
-        while (rowStart <= rowEnd && colStart <= colEnd)
+    static string PrintNumbers(int n)
+    {
+        if (n == 1)
         {
-            for (int i = colStart; i <= colEnd; i++)
-            {
-                array[rowStart, i] = num++;
-            }
-            rowStart++;
-
-            for (int i = rowStart; i <= rowEnd; i++)
-            {
-                array[i, colEnd] = num++;
-            }
-            colEnd--;
-
-            if (rowStart <= rowEnd)
-            {
-                for (int i = colEnd; i >= colStart; i--)
-                {
-                    array[rowEnd, i] = num++;
-                }
-                rowEnd--;
-            }
-
-            if (colStart <= colEnd)
-            {
-                for (int i = rowEnd; i >= rowStart; i--)
-                {
-                    array[i, colStart] = num++;
-                }
-                colStart++;
-            }
+            return "1";
         }
-
-        for (int i = 0; i < 4; i++)
+        else
         {
-            for (int j = 0; j < 4; j++)
-            {
-                Console.Write(array[i, j].ToString("D2") + " ");
-            }
-            Console.WriteLine();
+            return n + ", " + PrintNumbers(n - 1);
         }
     }
 }
