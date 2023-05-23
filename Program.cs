@@ -81,54 +81,89 @@
 // }
 
 // Задача 58
+// class Program
+// {
+//     static void Main()
+//     {
+//         int[,] matrix1 = {
+//             { 2, 4 },
+//             { 3, 2 }
+//         };
+
+//         int[,] matrix2 = {
+//             { 3, 4 },
+//             { 3, 3 }
+//         };
+
+//         int rows1 = matrix1.GetLength(0);
+//         int cols1 = matrix1.GetLength(1);
+//         int rows2 = matrix2.GetLength(0);
+//         int cols2 = matrix2.GetLength(1);
+
+//         if (cols1 != rows2)
+//         {
+//             Console.WriteLine("Невозможно выполнить умножение матриц.");
+//             return;
+//         }
+
+//         int[,] result = new int[rows1, cols2];
+
+//         for (int i = 0; i < rows1; i++)
+//         {
+//             for (int j = 0; j < cols2; j++)
+//             {
+//                 int sum = 0;
+//                 for (int k = 0; k < cols1; k++)
+//                 {
+//                     sum += matrix1[i, k] * matrix2[k, j];
+//                 }
+//                 result[i, j] = sum;
+//             }
+//         }
+
+//         Console.WriteLine("Результирующая матрица:");
+//         for (int i = 0; i < rows1; i++)
+//         {
+//             for (int j = 0; j < cols2; j++)
+//             {
+//                 Console.Write(result[i, j] + " ");
+//             }
+//             Console.WriteLine();
+//         }
+//     }
+// }
+
+
+// Задача 60
 class Program
 {
     static void Main()
     {
-        int[,] matrix1 = {
-            { 2, 4 },
-            { 3, 2 }
-        };
+        int[,,] array = new int[2, 2, 2];
 
-        int[,] matrix2 = {
-            { 3, 4 },
-            { 3, 3 }
-        };
+        int number = 10;
 
-        int rows1 = matrix1.GetLength(0);
-        int cols1 = matrix1.GetLength(1);
-        int rows2 = matrix2.GetLength(0);
-        int cols2 = matrix2.GetLength(1);
-
-        if (cols1 != rows2)
+        for (int i = 0; i < 2; i++)
         {
-            Console.WriteLine("Невозможно выполнить умножение матриц.");
-            return;
-        }
-
-        int[,] result = new int[rows1, cols2];
-
-        for (int i = 0; i < rows1; i++)
-        {
-            for (int j = 0; j < cols2; j++)
+            for (int j = 0; j < 2; j++)
             {
-                int sum = 0;
-                for (int k = 0; k < cols1; k++)
+                for (int k = 0; k < 2; k++)
                 {
-                    sum += matrix1[i, k] * matrix2[k, j];
+                    array[i, j, k] = number;
+                    number++;
                 }
-                result[i, j] = sum;
             }
         }
 
-        Console.WriteLine("Результирующая матрица:");
-        for (int i = 0; i < rows1; i++)
+        for (int i = 0; i < 2; i++)
         {
-            for (int j = 0; j < cols2; j++)
+            for (int j = 0; j < 2; j++)
             {
-                Console.Write(result[i, j] + " ");
+                for (int k = 0; k < 2; k++)
+                {
+                    Console.WriteLine(array[i, j, k] + "(" + i + "," + j + "," + k + ")");
+                }
             }
-            Console.WriteLine();
         }
     }
 }
