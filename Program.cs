@@ -1,41 +1,81 @@
 ﻿//Задача 54
+// class Program
+// {
+//     static void Main()
+//     {
+//         int[,] array = {
+//             { 1, 4, 7, 2 },
+//             { 5, 9, 2, 3 },
+//             { 8, 4, 2, 4 }
+//         };
+
+//         int rows = array.GetLength(0);
+//         int cols = array.GetLength(1);
+
+//         for (int i = 0; i < rows; i++)
+//         {
+//             for (int j = 1; j < cols; j++)
+//             {
+//                 int key = array[i, j];
+//                 int k = j - 1;
+
+//                 while (k >= 0 && array[i, k] < key)
+//                 {
+//                     array[i, k + 1] = array[i, k];
+//                     k--;
+//                 }
+
+//                 array[i, k + 1] = key;
+//             }
+//         }
+
+//         for (int i = 0; i < rows; i++)
+//         {
+//             for (int j = 0; j < cols; j++)
+//             {
+//                 Console.Write(array[i, j] + " ");
+//             }
+//             Console.WriteLine();
+//         }
+//     }
+// }
+
+// Задача 56
 class Program
 {
     static void Main()
     {
-        int[,] array = {
+        int[,] array = 
+        {
             { 1, 4, 7, 2 },
             { 5, 9, 2, 3 },
-            { 8, 4, 2, 4 }
+            { 8, 4, 2, 4 },
+            { 5, 2, 6, 7 }
         };
 
         int rows = array.GetLength(0);
         int cols = array.GetLength(1);
 
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 1; j < cols; j++)
-            {
-                int key = array[i, j];
-                int k = j - 1;
-
-                while (k >= 0 && array[i, k] < key)
-                {
-                    array[i, k + 1] = array[i, k];
-                    k--;
-                }
-
-                array[i, k + 1] = key;
-            }
-        }
+        int minSum = int.MaxValue; 
+        int minSumRow = -1; 
 
         for (int i = 0; i < rows; i++)
         {
+            int sum = 0;
+
             for (int j = 0; j < cols; j++)
             {
-                Console.Write(array[i, j] + " ");
+                sum += array[i, j];
             }
-            Console.WriteLine();
+
+            if (sum < minSum)
+            {
+                minSum = sum;
+                minSumRow = i;
+            }
         }
+
+        Console.WriteLine("Строка с наименьшей суммой элементов: " + (minSumRow + 1)); // +1 для перевода от нулевого индекса к номеру строки
+
     }
 }
