@@ -224,23 +224,52 @@
 // }
 
 // Задача 64
+// class Program
+// {
+//     static void Main()
+//     {
+//         int n = 8;
+//         Console.WriteLine("Результат: " + PrintNumbers(n));
+//     }
+
+//     static string PrintNumbers(int n)
+//     {
+//         if (n == 1)
+//         {
+//             return "1";
+//         }
+//         else
+//         {
+//             return n + ", " + PrintNumbers(n - 1);
+//         }
+//     }
+// }
+
+// Задача 66
 class Program
 {
     static void Main()
     {
-        int n = 8;
-        Console.WriteLine("Результат: " + PrintNumbers(n));
+        int m = 1;
+        int n = 15;
+        int sum = GetSumOfNaturalNumbers(m, n);
+        Console.WriteLine("Сумма натуральных чисел от " + m + " до " + n + ": " + sum);
     }
 
-    static string PrintNumbers(int n)
+    static int GetSumOfNaturalNumbers(int m, int n)
     {
-        if (n == 1)
+        if (m > n)
         {
-            return "1";
+            throw new ArgumentException("Значение M должно быть меньше или равно значению N.");
+        }
+
+        if (m == n)
+        {
+            return m;
         }
         else
         {
-            return n + ", " + PrintNumbers(n - 1);
+            return m + GetSumOfNaturalNumbers(m + 1, n);
         }
     }
 }
