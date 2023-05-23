@@ -246,30 +246,67 @@
 // }
 
 // Задача 66
+// class Program
+// {
+//     static void Main()
+//     {
+//         int m = 1;
+//         int n = 15;
+//         int sum = GetSumOfNaturalNumbers(m, n);
+//         Console.WriteLine("Сумма натуральных чисел от " + m + " до " + n + ": " + sum);
+//     }
+
+//     static int GetSumOfNaturalNumbers(int m, int n)
+//     {
+//         if (m > n)
+//         {
+//             throw new ArgumentException("Значение M должно быть меньше или равно значению N.");
+//         }
+
+//         if (m == n)
+//         {
+//             return m;
+//         }
+//         else
+//         {
+//             return m + GetSumOfNaturalNumbers(m + 1, n);
+//         }
+//     }
+// }
+
+// Задача 68
 class Program
 {
     static void Main()
     {
-        int m = 1;
-        int n = 15;
-        int sum = GetSumOfNaturalNumbers(m, n);
-        Console.WriteLine("Сумма натуральных чисел от " + m + " до " + n + ": " + sum);
+        int m = 2;
+        int n = 3;
+        int result = AckermannFunction(m, n);
+        Console.WriteLine("A(" + m + ", " + n + ") = " + result);
+
+        m = 3;
+        n = 2;
+        result = AckermannFunction(m, n);
+        Console.WriteLine("A(" + m + ", " + n + ") = " + result);
     }
 
-    static int GetSumOfNaturalNumbers(int m, int n)
+    static int AckermannFunction(int m, int n)
     {
-        if (m > n)
+        if (m == 0)
         {
-            throw new ArgumentException("Значение M должно быть меньше или равно значению N.");
+            return n + 1;
         }
-
-        if (m == n)
+        else if (m > 0 && n == 0)
         {
-            return m;
+            return AckermannFunction(m - 1, 1);
+        }
+        else if (m > 0 && n > 0)
+        {
+            return AckermannFunction(m - 1, AckermannFunction(m, n - 1));
         }
         else
         {
-            return m + GetSumOfNaturalNumbers(m + 1, n);
+            throw new ArgumentException("Значения m и n должны быть неотрицательными числами.");
         }
     }
 }
